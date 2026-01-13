@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: activity-service
+  mongodb:
+    username: root
+    password: password
+    host: localhost
+    port: 27017
+    database: fitness_activity_db
+    authentication-database: admin
