@@ -33,8 +33,8 @@ public class UserService {
     }
 
     public boolean existsByUserId(String userId) {
-        log.info("Validating user existence for keycloakId: {}", userId);
-        return repository.existsByKeycloakId(userId);
+        log.info("Validating user existence for userId: {}", userId);
+        return repository.existsById(userId);
     }
 
     /* ----------------- Helper methods ----------------- */

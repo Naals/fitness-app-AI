@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,9 +16,14 @@ import java.util.stream.Collectors;
 public class ActivityService {
 
     private final ActivityRepository activityRepository;
+    private final UserValidationService userValidationService;
 
     public ActivityResponse trackActivity(ActivityRequest request) {
 
+        boolean isValidUser = userValidationService.validateUser(request.getUserId());
+        if (!isValidUser) {
+            throw new RuntimeException("Invalid User: " + request.getUserId());
+        }
 
         Activity activity = Activity.builder()
                 .userId(request.getUserId())
@@ -54,7 +58,7 @@ public class ActivityService {
         List<Activity> activities = activityRepository.findByUserId(userId);
         return activities.stream()
                 .map(this::mapToResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public ActivityResponse getActivityById(String activityId) {
