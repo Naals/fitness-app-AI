@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class ActivityAIRepository {
+public class ActivityAIService {
 
     private final GeminiService geminiService;
 

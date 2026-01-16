@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class ActivityMessageListener {
 
     private final RecommendationRepository recommendationRepository;
-    private final ActivityAIRepository aiService;
+    private final ActivityAIService aiService;
 
     @RabbitListener()
     public void processActivity(Activity activity) {
