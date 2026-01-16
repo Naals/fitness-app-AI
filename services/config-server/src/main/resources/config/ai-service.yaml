@@ -9,6 +9,11 @@ spring:
       port: 27017
       database: fitness_ai_db
       authentication-database: admin
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin123
 
 eureka:
   client:

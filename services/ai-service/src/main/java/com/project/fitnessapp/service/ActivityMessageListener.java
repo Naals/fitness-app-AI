@@ -16,7 +16,7 @@ public class ActivityMessageListener {
     private final RecommendationRepository recommendationRepository;
     private final ActivityAIService aiService;
 
-    @RabbitListener()
+    @RabbitListener(queues = "${rabbitmq.queue.name}")
     public void processActivity(Activity activity) {
         log.info("Received activity for processing: {}", activity.getId());
         Recommendation recommendation = aiService.generateRecommendation(activity);
