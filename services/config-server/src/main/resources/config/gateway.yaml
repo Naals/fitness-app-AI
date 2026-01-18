@@ -2,7 +2,7 @@ spring:
   cloud:
     gateway:
       server:
-        webmvc:
+        webflux:
           routes:
             - id: user-service
               uri: lb://USER-SERVICE
@@ -23,4 +23,4 @@ eureka:
         defaultZone: http://localhost:8761/eureka
 
 server:
-  port: 8080
+  port: 9999
